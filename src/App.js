@@ -1,25 +1,36 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import Person from './Person/Person';
 
 class App extends Component {
+  constructor() {
+    super();
+    this.state = { text: ''};
+  }
+
+  update(name) {
+    this.setState({
+      text: name.target.value
+    });
+  }
+
   render() {
     return (
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+          <h3>Hi!!! This is my first react app!</h3> 
+          <h5>I would like to ask your name.<br />
+              What is your name?
+          </h5>
+          <input 
+            type="text"
+            onChange={this.update.bind(this)}
+          />
+          <h5>My name is {this.state.text}</h5>
+          
+          </header>  
       </div>
     );
   }
